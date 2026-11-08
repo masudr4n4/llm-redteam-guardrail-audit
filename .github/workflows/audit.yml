@@ -1,0 +1,42 @@
+name: audit
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      run_audit:
+        description: "Run the full red-team audit (uses the OPENAI_API_KEY secret; about $1)"
+        type: boolean
+        default: false
+
+jobs:
+  offline:
+    name: Detector, guardrail and suite checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - run: uv run pytest -q
+
+  audit:
+    name: Red-team audit
+    if: github.event_name == 'workflow_dispatch' && inputs.run_audit
+    needs: offline
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - run: uv run python -m redteam_audit.run --config A B C --max-cost 2
+      - run: uv run python -m redteam_audit.report
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-results
+          path: |
+            results/
+            docs/index.html
