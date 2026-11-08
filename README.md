@@ -189,7 +189,7 @@ docs/index.html          the report (served by GitHub Pages)
 | Offline tests (55) and report generator | ✅ Done |
 | Paid run, review results, fill in findings | ✅ Done |
 | Controls: cheaper model, planted bug, offline pipeline control | ✅ Done |
-| Publish repo and report | ⏳ |
+| Publish repo and report | ✅ Done |
 
 ---
 
