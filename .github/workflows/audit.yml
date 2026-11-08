@@ -6,9 +6,12 @@ on:
   workflow_dispatch:
     inputs:
       run_audit:
-        description: "Run the full red-team audit (uses the OPENAI_API_KEY secret; about $1)"
+        description: "Run the red-team audit (uses the OPENAI_API_KEY secret; replays the committed response cache for free, about $1 if results/cache is cleared)"
         type: boolean
         default: false
+
+permissions:
+  contents: read
 
 jobs:
   offline:
@@ -32,6 +35,8 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - run: uv sync
       - run: uv run python -m redteam_audit.run --config A B C --max-cost 2
+      - run: uv run python -m redteam_audit.run --config A B C --bot-model gpt-6-luna --max-cost 1
+      - run: uv run python -m redteam_audit.run --config M MG --no-utility --max-cost 1
       - run: uv run python -m redteam_audit.report
       - uses: actions/upload-artifact@v4
         if: always()

@@ -90,7 +90,9 @@ def main() -> None:
     controls = [json.loads((RESULTS / f).read_text()) for f in control_files if (RESULTS / f).exists()]
     attack_meta = {a.id: a for a in load_attacks()}
     env = Environment(loader=FileSystemLoader(TEMPLATES), autoescape=select_autoescape(["html", "j2"]))
-    total_cost = sum(r[k]["cost_usd"] for r in [*runs.values(), *controls] for k in ("bot_usage", "judge_usage"))
+    # Real spend comes from the unique saved responses: configurations that reuse another's replies (C, MG) would
+    # otherwise be counted twice.
+    total_cost = sum(json.loads(p.read_text())["cost_usd"] for p in (RESULTS / "cache").glob("*.json"))
     html = env.get_template("report.html.j2").render(
         runs=runs,
         A=runs["A"]["summary"],

@@ -2,10 +2,10 @@
   "config": "C",
   "prompt": "v3",
   "guarded": true,
-  "label": "Hardened prompt + output guardrails",
+  "label": "Security-hardened prompt + output guardrails",
   "bot_model": "gpt-6.1-terra",
   "judge_model": "gpt-6.1-sol",
-  "run_at": "2026-11-08T04:30:46+00:00",
+  "run_at": "2026-11-08T07:04:33+00:00",
   "bot_usage": {
     "input_tokens": 218937,
     "cached_input_tokens": 147696,

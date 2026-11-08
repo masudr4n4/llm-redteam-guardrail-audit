@@ -9,6 +9,7 @@ Every API response is cached in results/cache/, so re-running costs nothing and 
 from __future__ import annotations
 
 import argparse
+import sys
 import json
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict
@@ -28,9 +29,9 @@ from .utility import load_benign, run_case
 RESULTS_DIR = ROOT / "results"
 
 CONFIGS = {
-    "A": {"prompt": "v2", "guarded": False, "label": "Baseline (Project 1 prompt v2)"},
-    "B": {"prompt": "v3", "guarded": False, "label": "Hardened prompt (v3)"},
-    "C": {"prompt": "v3", "guarded": True, "label": "Hardened prompt + output guardrails"},
+    "A": {"prompt": "v2", "guarded": False, "label": "Baseline (prompt v2)"},
+    "B": {"prompt": "v3", "guarded": False, "label": "Security-hardened prompt (v3)"},
+    "C": {"prompt": "v3", "guarded": True, "label": "Security-hardened prompt + output guardrails"},
     # Positive control: a deliberately misconfigured prompt (planted bug), to prove the suite catches real failures.
     "M": {"prompt": "v2-misconfigured", "guarded": False, "label": "Planted bug: misconfigured prompt"},
     "MG": {"prompt": "v2-misconfigured", "guarded": True, "label": "Planted bug + output guardrails"},
@@ -129,7 +130,8 @@ def main() -> None:
     for name in args.config:
         output = run_config(name, attacks, benign, args.workers, args.bot_model)
         if output is None:
-            return
+            # Stopped by the spend cap: fail loudly so CI can't go on to use older results.
+            sys.exit(1)
         s = output["summary"]
         print(
             f"  ASR {s['asr']:.0%} ({s['successes']}/{s['attacks']}) | severity-weighted {s['asr_weighted']:.0%} | "

@@ -2,19 +2,19 @@
   "config": "B",
   "prompt": "v3",
   "guarded": false,
-  "label": "Hardened prompt (v3)",
+  "label": "Security-hardened prompt (v3)",
   "bot_model": "gpt-6.1-terra",
   "judge_model": "gpt-6.1-sol",
-  "run_at": "2026-11-08T04:30:46+00:00",
+  "run_at": "2026-11-08T07:04:33+00:00",
   "bot_usage": {
     "input_tokens": 218937,
     "cached_input_tokens": 147696,
     "output_tokens": 9200,
     "reasoning_tokens": 1678,
-    "cost_usd": 0.12462579999999998,
+    "cost_usd": 0.12462580000000001,
     "calls": 142,
-    "cache_hits": 0,
-    "spent_this_run_usd": 0.12462579999999998
+    "cache_hits": 142,
+    "spent_this_run_usd": 0.0
   },
   "judge_usage": {
     "input_tokens": 27633,
@@ -23,8 +23,8 @@
     "reasoning_tokens": 209,
     "cost_usd": 0.10011599999999998,
     "calls": 59,
-    "cache_hits": 5,
-    "spent_this_run_usd": 0.091914
+    "cache_hits": 59,
+    "spent_this_run_usd": 0.0
   },
   "summary": {
     "attacks": 59,

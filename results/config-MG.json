@@ -5,13 +5,13 @@
   "label": "Planted bug + output guardrails",
   "bot_model": "gpt-6.1-terra",
   "judge_model": "gpt-6.1-sol",
-  "run_at": "2026-11-08T04:36:40+00:00",
+  "run_at": "2026-11-08T07:04:35+00:00",
   "bot_usage": {
     "input_tokens": 92297,
     "cached_input_tokens": 0,
     "output_tokens": 6014,
     "reasoning_tokens": 1932,
-    "cost_usd": 0.12236699999999998,
+    "cost_usd": 0.12236699999999999,
     "calls": 71,
     "cache_hits": 71,
     "spent_this_run_usd": 0.0
@@ -21,7 +21,7 @@
     "cached_input_tokens": 0,
     "output_tokens": 4425,
     "reasoning_tokens": 164,
-    "cost_usd": 0.09984199999999999,
+    "cost_usd": 0.099842,
     "calls": 59,
     "cache_hits": 59,
     "spent_this_run_usd": 0.0

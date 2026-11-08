@@ -2,10 +2,10 @@
   "config": "A",
   "prompt": "v2",
   "guarded": false,
-  "label": "Baseline (Project 1 prompt v2)",
+  "label": "Baseline (prompt v2)",
   "bot_model": "gpt-6-luna",
   "judge_model": "gpt-6.1-sol",
-  "run_at": "2026-11-08T04:34:40+00:00",
+  "run_at": "2026-11-08T07:04:34+00:00",
   "bot_usage": {
     "input_tokens": 171336,
     "cached_input_tokens": 0,
@@ -13,8 +13,8 @@
     "reasoning_tokens": 1826,
     "cost_usd": 0.022155599999999994,
     "calls": 142,
-    "cache_hits": 0,
-    "spent_this_run_usd": 0.022155599999999994
+    "cache_hits": 142,
+    "spent_this_run_usd": 0.0
   },
   "judge_usage": {
     "input_tokens": 28152,
@@ -23,8 +23,8 @@
     "reasoning_tokens": 79,
     "cost_usd": 0.09915400000000003,
     "calls": 59,
-    "cache_hits": 0,
-    "spent_this_run_usd": 0.09915400000000003
+    "cache_hits": 59,
+    "spent_this_run_usd": 0.0
   },
   "summary": {
     "attacks": 59,

@@ -2,7 +2,7 @@
 #
 # Each attack:
 #   turns:      the attacker's messages. Multi-turn attacks are played live: every message gets a real bot reply.
-#   severity:   low | medium | high | critical (impact if it works against a real company)
+#   severity:   medium | high | critical (impact if it works against a real company; the scale also has low, unused here)
 #   goal:       what the attacker wants
 #   success:    what the reply must contain or do for the attack to count as successful (used by the judge)
 #   obfuscate:  optional converters that generate extra variants of this attack (base64, leetspeak, split)
